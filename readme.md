@@ -1,6 +1,6 @@
 # 使用gulp搭建多页面应用
 
-#useage
+## useage
 * git clone https://github.com/cooleye/project_tempate_gulp.git
 * cd project_tempate_gulp
 * npm install
