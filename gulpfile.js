@@ -40,6 +40,12 @@ gulp.task('html',function(){
 })
 
 
+//移动html
+gulp.task('lib',function(){
+  gulp.src('app/lib/**/*.*')
+  .pipe(gulp.dest('dist/lib'))
+})
+
 //clean
 gulp.task('clean',function(){
     del('dist');
@@ -48,7 +54,7 @@ gulp.task('clean',function(){
 // 默认任务
 gulp.task('default',["clean"], function() {
     setTimeout(function(){
-      gulp.start('script', 'style', 'images','html');
+      gulp.start('script', 'style', 'images','html','lib');
     },100)
 });
 
@@ -61,6 +67,8 @@ gulp.task('watch', function() {
   gulp.watch('app/js/*.js', ['script']);
   // 监视images文件的改动
   gulp.watch('app/images/*', ['images']);
+  //监听html的改动
+  gulp.watch('app/html/*', ['html']);
   // 创建浏览器自动刷新服务器
   livereload.listen();
   // dist目录下文件有改动就会浏览器刷新
