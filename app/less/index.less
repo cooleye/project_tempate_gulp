@@ -16,19 +16,18 @@ header{
 .container{
   width: 1030px;
   margin: 0 auto;
-  background-color: #faa;
   position: relative;
   .index-top-banner{
     width: 100%;
     height: 80px;
-
+    background-color: #D43F3A;
   } 
   .index-menu{
     width: 235px;
     height: 340px;
     background-color: rgba(0,0,0,.5);
     position: absolute;
-    left: 0;
+    left: 15px;
     top: 80px;
     z-index: 20;
     .index-menu-item{
@@ -95,7 +94,9 @@ header{
      display: none;
      background-color: #E0E0E0;
 }
-
+.index-banner{
+    position: relative;
+}
 .swiper-container {
   width: 100%;
   height: 340px;
@@ -108,7 +109,6 @@ header{
   background-color: #999;
 }
 .swiper-pagination{
-  // margin-top: -50px;
   bottom: 0;
   right: 100px;
   .swiper-pagination-bullet{
@@ -119,3 +119,132 @@ header{
 }
 
 
+.yewu{
+    height: 166px;
+    background-color: #D58512;
+    border-right: solid 1px #1B6D85;
+}
+
+.phone-recovery{
+    height: 231px;
+    background-color: #E38D13;
+    border-right: solid 1px #000000;
+}
+
+.fix-store-left{
+    float: left;
+    width: 800px;
+    background-color: #eee;
+    border: solid 1px #666;
+    .fix-store-select{
+        width: 100%;
+        height: 40px;
+        background-color: #67B168;
+        margin-top: 20px;
+    }
+    .fix-store-sort{
+        width: 100%;
+        height: 40px;
+        margin-top: 20px;
+        background-color: #3E8F3E;
+    }
+    #store-list{
+        width: 100%;
+        .store-list-item{
+            width: 100%;
+            height: 99px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #31B0D5;
+            .store-img{
+                width: 90px;height: 90px;
+                float: left;
+                img{width: 100%;height: 100%;}
+            }
+            .store-info{
+                float: left;
+               
+            }
+        }
+    }
+}
+
+
+.store-praise{
+    width: 268px;
+    margin-left: 860px;
+    background-color: #eee;
+    border:solid 1px #666;
+    #store-praise-list{
+        width: 100%;
+        .store-praise-list-item{
+            width: 100%;
+            height: 50px;
+            padding-left: 10px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-color: #2AABD2;
+            border-bottom: solid 1px #1B6D85;
+        }
+    }
+}
+
+
+
+/*--------分页----------*/
+.page_div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-family: "microsoft yahei";
+    color: #666666;
+    margin-right: 10px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    a{
+        min-width: 44px;
+        height: 44px;
+        border: 1px solid #999!important;
+        text-align: center;
+        margin: 0 4px;
+        cursor: pointer;
+        line-height: 44px;
+        color: #666666;
+        font-size: 16px;
+        display: inline-block;
+    }
+}
+/*
+ * 页数按钮样式
+ */
+
+#firstPage,
+#lastPage {
+    display: none;
+    width: 50px;
+    color: #0073A9;
+    border: 1px solid #999!important;
+}
+
+#prePage,
+#nextPage {
+    width: 70px;
+    color: #999;
+    border: 1px solid #999!important;
+}
+
+.page_div .current {
+    background-color: #FC6621;
+    border-color: #FC6621 !important;
+    color: #FFFFFF;
+}
+
+.totalPages {
+    margin: 0 10px;
+}
+
+.totalPages span,
+.totalSize span {
+    color: #999;
+    margin: 0 5px;
+}

@@ -6,14 +6,11 @@ var mySwiper = new Swiper('.swiper-container', {
 
 $(".index-menu-item").hover(
 function(){
-//	console.log('hover  in')
 	$(this).addClass('bg_green')
 	var i = $(this).index()
-//	console.log(i)
 	$(".cate-list-sub-item").eq(i).show()
 },function(){
 	$(this).removeClass('bg_green')
-//	console.log('hover out')
 	var i = $(this).index()
 	$(".cate-list-sub-item").eq(i).hide()
 })
@@ -23,3 +20,39 @@ $(".cate-list-sub-item").hover(function(){
 },function(){
 	$(this).hide()
 })
+
+
+//请求商家接口，获取所有商家数据
+$.get('http://localhost:3000/store',function(res){
+	
+	//{ total:20,data:[] }
+	var html = baidu.template('store-list-item-temp',res);
+	$('#store-list').html(html);
+	
+	//商家数据分页展示   
+	$("#page").paging({
+		pageNo:0,  // 第几页
+		totalPage:Math.ceil(res.total/5),   //一共有多少页
+		totalSize: res.total,   // 移动有多少条数据
+		callback: function(page) {
+			// 在回调李获取到 点击的页码
+			console.log(page)
+			getStoreLimit(page-1,5)
+		}
+	})
+})
+
+// 分页查询
+function getStoreLimit(page,size){
+	console.log('page',page)
+	$.get('http://localhost:3000/storelimit',{page:page,size:size},function(res){
+	
+		var html = baidu.template('store-list-item-temp',res);
+		$('#store-list').html(html);
+	})
+}
+
+
+
+//自定义jq插件
+$('header').changeColor()
