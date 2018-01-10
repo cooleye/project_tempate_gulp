@@ -23,7 +23,7 @@ gulp.task('script',function() {
   return gulp.src('app/js/*.js')
     // .pipe(concat('main.js'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
+//  .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
 });
 // images

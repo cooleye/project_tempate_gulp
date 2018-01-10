@@ -73,21 +73,32 @@
   </div>
   
   <div class="container-fluid">
-  	<p>热门手机回收</p>
-  	<div class="row">
-  		<div class="col-md-2 phone-recovery"></div>
-  		<div class="col-md-2 phone-recovery"></div>
-  		<div class="col-md-2 phone-recovery"></div>
-  		<div class="col-md-2 phone-recovery"></div>
-  		<div class="col-md-2 phone-recovery"></div>
-  		<div class="col-md-2 phone-recovery"></div>
+  	<p>优品精选</p>
+  	<div class="row"  id="phone_lists">
+  		
+  		
   	</div>
   </div>
   
   <div class="container-fluid">
   	<p>到店维修</p>
   	<div class="row fix-store-left">
-  		<div class="fix-store-select"></div>
+  		<div class="fix-store-select">
+  			<div class="selct-city">北京</div>
+  			<div class="select-district">选择区县</div>
+  			<div class="city-panel">
+  				城市列表
+  				<div class="city-panel-inner">
+  					热门 <ul id="city-list"></ul>
+  				</div>
+  			</div>
+  			<div class="district-panel">
+  				区县列表
+  				<div class="district-panel-inner">
+  					热门 <ul id="district-list"></ul>
+  				</div>
+  			</div>
+  		</div>
   		<div class="fix-store-sort"></div>
   		<div id="store-list">
   			
@@ -124,6 +135,22 @@
 		</div>
 	<%}%>
 </script>
+
+<script type="text/html" id="phone_temp">
+	
+	
+	<%for(var i = 0; i< data.length;i++){%>
+		<div class="col-md-2 phone-list-item">
+  			<a href="http://127.0.0.1:8020/project_template_gulp/app/html/detail.html?id=<%= data[i].id %>">
+	  			<img src="<%= data[i].imgurl %>"/>
+	  			<p><%= data[i].short_name %></p>
+	  			<p>￥<%= data[i].price %></p>
+  			</a>
+  		</div>
+	<%}%>	
+</script>
 </body>
 <script type="text/javascript" src="../js/index.min.js"></script>
+<script type="text/javascript" src="../js/cityselect.min.js"></script>
+
 </html>

@@ -56,3 +56,17 @@ function getStoreLimit(page,size){
 
 //自定义jq插件
 $('header').changeColor()
+
+
+
+// 手机列表展示
+$.get('http://localhost:3000/phone',function(res){
+	
+	var html = baidu.template('phone_temp',res);
+	$("#phone_lists").html(html);
+	
+	var str = JSON.stringify(res)
+	window.localStorage.detail = str;
+	//  setItem()   localStorage.a = a;   localStorage['a'] = a;
+	
+})
