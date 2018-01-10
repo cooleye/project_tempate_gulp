@@ -52,13 +52,6 @@ function getStoreLimit(page,size){
 	})
 }
 
-
-
-//自定义jq插件
-$('header').changeColor()
-
-
-
 // 手机列表展示
 $.get('http://localhost:3000/phone',function(res){
 	

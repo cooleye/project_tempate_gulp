@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#container{
+				width: 600px;height: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="container" tabindex="0"></div>
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=7780f2c00718f2525945ca50ac1b1841"></script>
+	<script type="text/javascript">
+        var map = new AMap.Map('container',{
+            resizeEnable: true,
+            zoom: 10,
+            center: [116.480983, 40.0958]
+        });
+        
+        AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.OverView'],
+		    function(){
+		        map.addControl(new AMap.ToolBar());
+		
+		        map.addControl(new AMap.Scale());
+		
+		        map.addControl(new AMap.OverView({isOpen:true}));
+		});
+		
+		 marker = new AMap.Marker({
+			position: ["116.368904","39.923423"],
+			offset: new AMap.Pixel(-12,-12),
+			zIndex: 101,
+			title: "北京",
+			map: map
+		});
+    </script>
+	
+	</body>
+</html>
