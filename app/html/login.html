@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+	<script src="../lib/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../lib/gVerify.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../lib/jquery-validate.js" type="text/javascript" charset="utf-8"></script>
+	<h1> 登录 </h1>
+	
+	
+	<form>
+		<div class="form_control">
+	      <input class="required" value="" type="text" name="email" id="email" data-tip="请输入您的邮箱" data-valid="isNonEmpty||isEmail" data-error="email不能为空||邮箱格式不正确">
+	    </div>
+	    
+	    <div class="form_control">
+	      <input class="required"  value="" type="password"  id="password" data-tip="请输入您的密码" data-valid="isNonEmpty||between:6-16" data-error="密码不能为空||密码长度6-16位" name="nickname">
+	    </div>
+	
+		<div id="v_container" style="width: 200px;height: 50px;"></div>
+		<div class="form_control">
+			<input  class="required" type="text" id="verifyCode" value="" placeholder="请输入验证码" data-tip="请输入验证码" data-valid="isNonEmpty||between:4-4" data-error="验证码不能为空||验证码长度为4位" />
+		</div>
+	
+		<input type="submit" value="提交"/>
+		<div id="regist_err" style="color:red">
+			
+		</div>
+	</form>
+	
+	<script type="text/javascript">
+		$('form').validate({
+		    onFocus: function() {
+		      this.parent().addClass('active');
+		      return false;
+		    },
+		
+		    onBlur: function() {
+		      var $parent = this.parent();
+		      var _status = parseInt(this.attr('data-status'));
+		      $parent.removeClass('active');
+		      if (!_status) {
+		        $parent.addClass('error');
+		      }
+		      return false;
+		    }
+		  });
+			  
+			  //生成验证码
+	    var verifyCode = new GVerify("v_container");
+			 
+		 $('form').on('submit', function(event) {
+		    event.preventDefault();
+		    var fr = $(this).validate('submitValidate'); //return boolean;
+		    var vr = verifyCode.validate($("#verifyCode").val())
+		    if(fr && vr){
+		    		console.log('验证通过！！')
+		    		
+		    		var email = $("#email").val()
+		    		var password = $("#password").val()
+		    		
+		    		$.post('http://localhost:3000/login',{email:email,password:password},function(res){
+		    			console.log(res)
+		    			if(res.status == 'ok'){
+		    				window.location.href="index.html"
+		    			}else{
+		    				$("#regist_err").text('用户名或密码错误')
+		    			}
+		    		})
+		    }
+		  });
+	</script>
+	</body>
+</html>
